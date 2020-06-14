@@ -28,3 +28,4 @@ except FileExistsError as e:
     print('既にファイルは存在しているので、os.mkdirの処理はスキップします')
 
 fig.savefig(data_save_path + '/' + 'effect_home.png')
+print('結果ファイルを出力しました！')
