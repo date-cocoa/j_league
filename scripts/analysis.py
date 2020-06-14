@@ -36,6 +36,6 @@ data['total_scores'] = data['home_scores'].astype(int) + data['away_scores'].ast
 sns.set()
 fig = plt.figure(figsize=(30, 20))
 sns.violinplot(x=data['year'].astype(str), y=data['total_scores'])
-fig.savefig(data_save_path + '/' + 'time_series.png')
+fig.savefig(data_save_path + '/' + 'timeseries.png')
 print('結果ファイルを出力しました！(time_series.png)')
 
