@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
+# home効果を可視化
 path = os.getcwd()
 data = pd.read_csv(path + '/' + 'data.csv')
 data = data[data['year'] > 1998] # pk戦が廃止以降
