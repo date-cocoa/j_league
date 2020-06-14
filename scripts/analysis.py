@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
+# make directory and path
 path = os.getcwd()
 parent_path = '/'.join(path.split('/')[:-1])
 
