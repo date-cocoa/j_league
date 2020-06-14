@@ -34,7 +34,7 @@ data = data[data['year'] > 1998] # pk戦が廃止以降
 data['total_scores'] = data['home_scores'].astype(int) + data['away_scores'].astype(int)
 
 sns.set()
-fig = plt.figure()
+fig = plt.figure(figsize=(30, 20))
 sns.violinplot(x=data['year'].astype(str), y=data['total_scores'])
 fig.savefig(data_save_path + '/' + 'time_series.png')
 print('結果ファイルを出力しました！(time_series.png)')
