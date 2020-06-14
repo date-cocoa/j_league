@@ -6,13 +6,13 @@ import os
 # make directory and path
 path = os.getcwd()
 parent_path = '/'.join(path.split('/')[:-1])
+data_save_path = parent_path + '/result/'
 
 try:
     os.mkdir(data_save_path)
 except FileExistsError as e:
     print(e)
     print('既にファイルは存在しているので、os.mkdirの処理はスキップします')
-data_save_path = parent_path + '/result/'
 
 # home効果を可視化
 data = pd.read_csv(parent_path + '/' + 'data/' + 'data.csv')
