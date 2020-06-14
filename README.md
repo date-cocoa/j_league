@@ -8,7 +8,8 @@ jリーグのデータを取得して分析するファイル
 
 ## 実行方法
 ```zsh
-# conda activate j_league (this is my environment)
+# conda activate j_league (if you already created environment)
+
 conda create -n j_league -y python=3.
 conda activate j_league
 pip install -r requirements.txt
@@ -18,6 +19,7 @@ python3 analysis.py
 ```
 
 ## ファイル構成
+```zsh
 .
 ├── README.md
 ├── data
@@ -31,4 +33,4 @@ python3 analysis.py
     ├── analysis.py
     ├── get_data.py
     └── scrape.py
- 
+ ```
