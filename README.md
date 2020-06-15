@@ -27,7 +27,8 @@ python3 analysis.py
 ├── requirements.txt
 ├── result
 │   ├── effect_home.png
-│   └── time_series.png
+│   ├── time_series.png
+│   └── time_series2.png
 └── scripts
     ├── __pycache__
     │   └── scrape.cpython-38.pyc
