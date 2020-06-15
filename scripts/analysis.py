@@ -3,16 +3,18 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import os
 
-def make_directory(path):
+PATH = os.getcwd() # ./scripts
+PARENT_PATH = '/'.join(PATH.split('/')[:-1]) # .
+DATA_SAVE_PATH = PARENT_PATH  + '/result' # ./result
+
+def make_directory(data_save_path):
     """親pathにディレクトリを作成。既に作成されている場合はskip
     args:
-        path: 現在のpath
+        data_save_path: ディレクトリを作成するpath
     """
-    parent_path = '/'.join(PATH.split('/')[:-1])
-    data_save_path = parent_path + '/result/'
-
     try:
         os.mkdir(data_save_path)
+    
     except FileExistsError as e:
         print(e)
         print('既にファイルは存在しているので、os.mkdirの処理はスキップします')
@@ -30,7 +32,7 @@ def visualize_home_effect(data):
     fig = plt.figure()
     sns.barplot(x=plot_data['Kind'], y=plot_data['Score'])
     plt.xlabel('')
-    fig.savefig(data_save_path + '/' + 'effect_home.png')
+    fig.savefig(DATA_SAVE_PATH + '/' + 'effect_home.png')
     print('結果ファイルを出力しました！(effect_home.png)')
 
 def visualize_timeseries_score(data):
@@ -43,17 +45,15 @@ def visualize_timeseries_score(data):
     sns.set()
     fig = plt.figure(figsize=(10, 7))
     sns.violinplot(x=data['year'].astype(str), y=data['total_scores'])
-    fig.savefig(data_save_path + '/' + 'time_series.png')
+    fig.savefig(DATA_SAVE_PATH + '/' + 'time_series.png')
     print('結果ファイルを出力しました！(time_series.png)')
 
 def main():
-    PATH = os.getcwd()
-    data = pd.read_csv(parent_path + '/' + 'data/' + 'data.csv')
+    make_directory(data_save_path=DATA_SAVE_PATH)
+    data = pd.read_csv(PARENT_PATH + '/' + 'data/' + 'data.csv')
     data = data[data['year'] > 1998] # pk戦が廃止以降
+    visualize_home_effect(data=data)
+    visualize_home_effect(data=data)
 
-    make_directory(path=PATH)
-    visualize_home_effect(data=data)
-    visualize_home_effect(data=data)
-    
 if __name__ == '__main__':
     main()
