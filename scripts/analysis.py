@@ -2,6 +2,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import pandas as pd
 import os
+import re
 
 PATH = os.getcwd() # ./scripts
 PARENT_PATH = '/'.join(PATH.split('/')[:-1]) # .
@@ -51,7 +52,12 @@ def visualize_timeseries_score(data):
 def main():
     make_directory(data_save_path=DATA_SAVE_PATH)
     data = pd.read_csv(PARENT_PATH + '/' + 'data/' + 'data.csv')
-    data = data[data['year'] > 1998] # pk戦が廃止以降
+    # pk戦の場合はaway_scoresにその情報が含まれるため、それを削除
+    away_scores = []
+    for idx in range(len(data)):
+        away_scores.append(data['away_scores'][idx].split('(')[0])  
+    data['away_scores'] = away_scores
+
     visualize_home_effect(data=data)
     visualize_home_effect(data=data)
 
