@@ -44,10 +44,18 @@ def visualize_timeseries_score(data):
     data['total_scores'] = data['home_scores'].astype(int) + data['away_scores'].astype(int)
 
     sns.set()
-    fig = plt.figure(figsize=(10, 7))
+    fig = plt.figure(figsize=(15, 7))
     sns.violinplot(x=data['year'].astype(str), y=data['total_scores'])
     fig.savefig(DATA_SAVE_PATH + '/' + 'time_series.png')
     print('結果ファイルを出力しました！(time_series.png)')
+
+def visualize_timeseries_score2(data):
+    mean_data = data['total_scores'].groupby(data.year).mean() 
+    sns.set()
+    fig = plt.figure(figsize=(15, 7))
+    sns.lineplot(x=mean_data.index, y=mean_data)
+    fig.savefig(DATA_SAVE_PATH + '/' + 'time_series2.png')
+    print('結果ファイルを出力しました！(time_series2.png)')
 
 def main():
     make_directory(data_save_path=DATA_SAVE_PATH)
@@ -59,7 +67,8 @@ def main():
     data['away_scores'] = away_scores
 
     visualize_home_effect(data=data)
-    visualize_home_effect(data=data)
+    visualize_timeseries_score(data=data)
+    visualize_timeseries_score2(data=data)
 
 if __name__ == '__main__':
     main()
