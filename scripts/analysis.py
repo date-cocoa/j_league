@@ -8,6 +8,16 @@ PATH = os.getcwd() # ./scripts
 PARENT_PATH = '/'.join(PATH.split('/')[:-1]) # .
 DATA_SAVE_PATH = PARENT_PATH  + '/result' # ./result
 
+data = pd.read_csv('../data/data.csv')
+data_detail = pd.read_csv('../data/data_detail.csv')
+
+data_after_2000 = data[data['year'] >= 2000]
+
+data_all = pd.concat([data_after_2000, data_detail], axis=0)
+
+
+####
+
 def make_directory(data_save_path):
     """親pathにディレクトリを作成。既に作成されている場合はskip
     args:

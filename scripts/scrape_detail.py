@@ -55,7 +55,7 @@ def get_detail_results(year):
         if '-' not in html_result[idx].text:
             switch = False
 
-        time.sleep(1)
+        time.sleep(2)
 
     return date_list, start_list, place_list, numbers_list, crowds_list, whether_list, temperature_list, humidity_list
 

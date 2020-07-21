@@ -1,8 +1,21 @@
 import pandas as pd
 import time
 import numpy as np
-import scrape
+import scrape_detail
 import os
+
+years = np.arange(2000, 2020, 1)
+data = pd.DataFrame()
+
+scrape_detail.get_detail_results(1998)
+
+for year in years:
+    data = pd.concat([data, pd.DataFrame(scrape_detail.get_detail_results(year)).T], axis=0)
+    print(str(year) + ' ' + 'Finish!!')
+    time.sleep(5)
+
+
+######
 
 path = os.getcwd()
 parent_path = '/'.join(path.split('/')[:-1])
